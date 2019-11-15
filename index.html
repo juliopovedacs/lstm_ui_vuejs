@@ -8,8 +8,14 @@
 </head>
 <body>
     <div id="app">
-        <p>Hello {{ name }}</p>
-        <a :href="url" target="_blank">Go to {{ website }}</a>
+        <div v-show="show">
+            <h1>Title</h1>
+            <h2>Subtitle</h2>
+            <a :href="url" target="_blank">Go to {{ website }}</a>
+        </div>
+        <div v-show="!show">
+            <p>This is hidden</p>
+        </div>
     </div>
 
     <!-- development version, includes helpful console warnings -->
@@ -18,9 +24,9 @@
         let app = new Vue({
             el: '#app',
             data: {
-                name: 'World',
                 url: 'https://www.google.com',
-                website: 'Google'
+                website: 'Google',
+                show: true
             }
         })
     </script>
