@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{ title | uppercase }}</h1>
-        <h2>{{ subtitle | lowercase }}</h2>
-        <p>{{ paragraph | capitalize }}</p>
+        <button @click="counter++">Add 1</button>
+        <button @click="counter--">Subtract 1</button>
+        <p>The counter is in {{ counter }}</p>
     </div>
 
     <!-- development version, includes helpful console warnings -->
@@ -19,21 +19,16 @@
         let app = new Vue({
             el: '#app',
             data: {
-                title: "LSTM UI",
-                subtitle: "Welcome to LSTM UI",
-                paragraph: "paragraph"
-            },
-            filters: {
-                uppercase: function (str) {
-                    return str.toUpperCase()
-                },
-                lowercase: function (str) {
-                    return str.toLowerCase()
-                },
-                capitalize: function (str) {
-                    return str.charAt(0).toUpperCase() + str.slice(1)
-                }
-            }
+                counter: 0
+            }//,
+            //methods: {
+            //    add: function () {
+            //        this.counter++
+            //    },
+            //    subtract: function () {
+            //        this.counter--
+            //    }
+            //}
         })
     </script>
 </body>
