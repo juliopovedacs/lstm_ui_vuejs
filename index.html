@@ -8,9 +8,8 @@
 </head>
 <body>
     <div id="app">
-        <button @click="counter++">Add 1</button>
-        <button @click="counter--">Subtract 1</button>
-        <p>The counter is in {{ counter }}</p>
+        <input type="text" name="name" placeholder="Enter your name" v-model="name">
+        <p>Your uppercase name is: {{ name | uppercase }}</p>
     </div>
 
     <!-- development version, includes helpful console warnings -->
@@ -19,16 +18,13 @@
         let app = new Vue({
             el: '#app',
             data: {
-                counter: 0
-            }//,
-            //methods: {
-            //    add: function () {
-            //        this.counter++
-            //    },
-            //    subtract: function () {
-            //        this.counter--
-            //    }
-            //}
+                name: ''
+            },
+            filters: {
+                uppercase: function(str) {
+                    return str.toUpperCase()
+                }
+            }
         })
     </script>
 </body>
