@@ -8,14 +8,9 @@
 </head>
 <body>
     <div id="app">
-        <div v-show="show">
-            <h1>Title</h1>
-            <h2>Subtitle</h2>
-            <a :href="url" target="_blank">Go to {{ website }}</a>
-        </div>
-        <div v-show="!show">
-            <p>This is hidden</p>
-        </div>
+        <h1>{{ title | uppercase }}</h1>
+        <h2>{{ subtitle | lowercase }}</h2>
+        <p>{{ paragraph | capitalize }}</p>
     </div>
 
     <!-- development version, includes helpful console warnings -->
@@ -24,9 +19,20 @@
         let app = new Vue({
             el: '#app',
             data: {
-                url: 'https://www.google.com',
-                website: 'Google',
-                show: true
+                title: "LSTM UI",
+                subtitle: "Welcome to LSTM UI",
+                paragraph: "paragraph"
+            },
+            filters: {
+                uppercase: function (str) {
+                    return str.toUpperCase()
+                },
+                lowercase: function (str) {
+                    return str.toLowerCase()
+                },
+                capitalize: function (str) {
+                    return str.charAt(0).toUpperCase() + str.slice(1)
+                }
             }
         })
     </script>
