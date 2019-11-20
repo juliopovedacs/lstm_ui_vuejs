@@ -28,6 +28,8 @@
                 
                 // Send up to parent
                 this.$emit('add-todo', newTodo)
+
+                this.title = "";
             }
         }
     }
