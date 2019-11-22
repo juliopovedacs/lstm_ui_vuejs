@@ -44,6 +44,27 @@ export default {
       .catch(err => console.log(err));
   }
 };
+
+import * as go from "gojs";
+
+console.log(init());
+
+function init() {
+  var $ = go.GraphObject.make;
+  var myDiagram = $(go.Diagram, "myDiagramDiv");
+  var nodeDataArray = [
+    { key: "Alpha", color: "lime" },
+    { key: "Beta", color: "cyan" },
+    { key: "Zeta", isGroup: true },
+    { key: "Delta", color: "pink", group: "Zeta" },
+    { key: "Gamma", color: "maroon", group: "Zeta" }
+  ];
+  var linkDataArray = [
+    { to: "Beta", from: "Alpha", color: "red" },
+    { from: "Alpha", to: "Zeta" }
+  ];
+  myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+}
 </script>
 
 <style>
