@@ -1,20 +1,18 @@
 <template>
   <div id="app">
-    <AddTodo v-on:add-todo="addTodo"/>
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+    <p>Select an event log:</p>
+    <SelectEventLogForm />
   </div>
 </template>
 
 <script>
-import Todos from "../components/Todos";
-import AddTodo from '../components/AddTodo';
 import axios from 'axios';
+import SelectEventLogForm from '../components/SelectEventLogForm';
 
 export default {
   name: "Home",
   components: {
-    Todos,
-    AddTodo
+    SelectEventLogForm,
   },
   data() {
     return {
