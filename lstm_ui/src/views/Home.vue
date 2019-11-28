@@ -2,6 +2,10 @@
   <div id="app">
     <p>Select an event log:</p>
     <SelectEventLogForm />
+
+    <div class="row justify-content-center">
+      <button v-on:click="addNode">Predict Next Event</button>
+    </div>
   </div>
 </template>
 
@@ -16,7 +20,8 @@ export default {
   },
   data() {
     return {
-      todos: []
+      todos: [],
+      running_cases: []
     };
   },
   methods: {
@@ -37,32 +42,23 @@ export default {
     }
   },
   created() {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
-      .then(res => this.todos = res.data)
+    axios.get('http://127.0.0.1:8000/event_logs/')
+      .then(res => this.running_cases = res.data)
       .catch(err => console.log(err));
+  },
+  addNode() {
+    var model = this.model();
+    model.startTransaction();
+    model.setDataProperty(model.findNodeDataForKey(4), "color", "purple");
+    var data = { text: "NEW " + this.counter++, color: "yellow" };
+    model.addNodeData(data);
+    model.addLinkData({ from: 3, to: model.getKeyForNodeData(data) });
+    model.commitTransaction("added Node and Link");
+    // also manipulate the Diagram by changing its Diagram.selection collection
+    var diagram = this.$refs.diag.diagram;
+    diagram.select(diagram.findNodeForData(data));
   }
 };
-
-import * as go from "gojs";
-
-console.log(init());
-
-function init() {
-  var $ = go.GraphObject.make;
-  var myDiagram = $(go.Diagram, "myDiagramDiv");
-  var nodeDataArray = [
-    { key: "Alpha", color: "lime" },
-    { key: "Beta", color: "cyan" },
-    { key: "Zeta", isGroup: true },
-    { key: "Delta", color: "pink", group: "Zeta" },
-    { key: "Gamma", color: "maroon", group: "Zeta" }
-  ];
-  var linkDataArray = [
-    { to: "Beta", from: "Alpha", color: "red" },
-    { from: "Alpha", to: "Zeta" }
-  ];
-  myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-}
 </script>
 
 <style>
