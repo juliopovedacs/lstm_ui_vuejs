@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>Select an event log:</p>
-    <SelectEventLogForm />
+    <SelectEventLogForm :eventLogs="eventLogs"/>
 
     <div class="row justify-content-center">
       <button v-on:click="addNode">Predict Next Event</button>
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       todos: [],
-      running_cases: []
+      eventLogs: []
     };
   },
   methods: {
@@ -42,8 +42,8 @@ export default {
     }
   },
   created() {
-    axios.get('http://127.0.0.1:8000/event_logs/')
-      .then(res => this.running_cases = res.data)
+    axios.get('http://127.0.0.1:8001/event_logs/')
+      .then(res => this.eventLogs = res.data)
       .catch(err => console.log(err));
   },
   addNode() {
