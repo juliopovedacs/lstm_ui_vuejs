@@ -6,7 +6,7 @@
 </template>
 
 <script>
-var counter = 3;
+var last_activity_key = 3;
 
 console.log("Started executing init");
 var $ = go.GraphObject.make;
@@ -15,10 +15,10 @@ var myDiagram = $(go.Diagram, "myDiagramDiv", {
 });
 var nodeDataArray = [
   { key: 1, text: "Activity 1", color: "lightblue" },
-  { key: 3, text: "Activity 2", color: "lightgreen" },
-  { key: 4, text: "Activity 3", color: "pink" }
+  { key: 2, text: "Activity 2", color: "lightblue" },
+  { key: 3, text: "Activity 3", color: "lightblue" }
 ];
-var linkDataArray = [{ from: 1, to: 3 }, { from: 3, to: 4 }];
+var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
 
 myDiagram.nodeTemplate = $(
   go.Node,
@@ -42,9 +42,11 @@ export default {
       console.log("Started executing addNode");
       var model = myDiagram.model;
       model.startTransaction();
-      var data = { text: "New Activity " + this.counter++, color: "yellow" };
+      var new_activity_key = last_activity_key + 1;
+      var data = { key: new_activity_key, text: "New Activity " + new_activity_key, color: "lightblue" };
       model.addNodeData(data);
-      model.addLinkData({ from: counter--, to: model.getKeyForNodeData(data) });
+      model.addLinkData({ from: last_activity_key, to: model.getKeyForNodeData(data) });
+      last_activity_key++;
       model.commitTransaction("added Node and Link");
       console.log("Finished executing addNode");
     }
