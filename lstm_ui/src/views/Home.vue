@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <p>Select an event log:</p>
-    <SelectEventLogForm :eventLogs="eventLogs" />
+    <p id="instruction">Select an event log:</p>
+    <SelectEventLogForm :eventLogs="eventLogs" id="eventLogsCombobox" />
   </div>
 </template>
 
@@ -75,5 +75,13 @@ body {
 
 .btn:hover {
   background: #666;
+}
+
+#instruction {
+  padding-top: 20px;
+}
+
+#eventLogsCombobox {
+  padding-bottom: 20px;
 }
 </style>
