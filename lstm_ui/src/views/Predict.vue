@@ -64,7 +64,7 @@ export default {
     var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
     console.log(eventLogId);
     axios
-      .get("http://127.0.0.1:8000/event_logs/")
+      .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/`)
       .then(res => (this.runningCases = res.data))
       .catch(err => console.log(err));
   }
