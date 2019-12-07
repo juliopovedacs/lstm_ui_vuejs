@@ -24,9 +24,10 @@ export default {
     },
     methods: {
         methodToRunOnSelect(payload) {
-            this.object = payload;
+          this.object = payload;
+          this.$router.push({ path:'/predict', query:{log: this.object}} );
         }
-    }
+      }
 };
 </script>
 

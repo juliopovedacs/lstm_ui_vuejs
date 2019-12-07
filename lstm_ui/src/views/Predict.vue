@@ -1,6 +1,8 @@
 <template>
   <div class="row justify-content-center">
     <h1 id="predictTitle">Predict</h1>
+    <b>Selected log:</b>
+    <p id="selectedLogName">{{ this.$route.query.log.name }}</p>
     <button id="predictNextEventButton" @click="addNode">Predict Next Event</button>
   </div>
 </template>
@@ -63,6 +65,10 @@ export default {
 }
 
 #predictNextEventButton {
+  margin-bottom: 20px;
+}
+
+#selectedLogName {
   margin-bottom: 20px;
 }
 </style>

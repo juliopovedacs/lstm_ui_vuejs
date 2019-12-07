@@ -2,7 +2,6 @@
   <div id="app">
     <p id="instruction">Select an event log:</p>
     <SelectEventLogForm :eventLogs="eventLogs" id="eventLogsCombobox" />
-    <button id="nextButton" @click="goToPredict">Next</button>
   </div>
 </template>
 
@@ -42,12 +41,6 @@ export default {
         .then(res => (this.todos = [...this.todos, res.data]))
         .catch(err => console.log(err));
     },
-    goToPredict() {
-      console.log("Predict")
-      // (1) Validate that user selected a log
-      // (2) Change view
-      this.$router.push('/predict');
-    }
   },
   created() {
     document.getElementById("myDiagramDiv").style.display = "none";
