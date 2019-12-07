@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
-    <h1>Predict</h1>
-    <button @click="addNode">Predict Next Event</button>
+    <h1 id="predictTitle">Predict</h1>
+    <button id="predictNextEventButton" @click="addNode">Predict Next Event</button>
   </div>
 </template>
 
@@ -50,9 +50,19 @@ export default {
       model.commitTransaction("added Node and Link");
       console.log("Finished executing addNode");
     }
+  },
+  created() {
+    document.getElementById("myDiagramDiv").style.display = "block";
   }
 };
 </script>
 
 <style scoped>
+#predictTitle {
+  padding: 20px;
+}
+
+#predictNextEventButton {
+  margin-bottom: 20px;
+}
 </style>

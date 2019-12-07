@@ -2,6 +2,7 @@
   <div id="app">
     <p id="instruction">Select an event log:</p>
     <SelectEventLogForm :eventLogs="eventLogs" id="eventLogsCombobox" />
+    <button id="nextButton" @click="goToPredict">Next</button>
   </div>
 </template>
 
@@ -41,9 +42,14 @@ export default {
         .then(res => (this.todos = [...this.todos, res.data]))
         .catch(err => console.log(err));
     },
-
+    goToPredict() {
+      console.log("Predict")
+      // (1) Validate that user selected a log
+      // (2) Change view
+    }
   },
   created() {
+    document.getElementById("myDiagramDiv").style.display = "none";
     axios
       .get("http://127.0.0.1:8000/event_logs/")
       .then(res => (this.eventLogs = res.data))
@@ -83,5 +89,10 @@ body {
 
 #eventLogsCombobox {
   padding-bottom: 20px;
+}
+
+#nextButton {
+  padding: 10px;
+  margin-bottom: 20px;
 }
 </style>
