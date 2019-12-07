@@ -46,6 +46,7 @@ export default {
       console.log("Predict")
       // (1) Validate that user selected a log
       // (2) Change view
+      this.$router.push('/predict');
     }
   },
   created() {
