@@ -1,7 +1,7 @@
 <template>
   <div class="contactUs">
     <h1 id="contactUsTitle">Contact us</h1>
-    <p>If you have any question regarding our work, please contact us:</p>
+    <p id="contactUsText">If you have any question regarding our work, please contact us:</p>
     <ul>
       <li>Manuel Camargo - manuel.camargo@ut.ee</li>
       <li>Marlon Dumas - marlon.dumas@ut.ee</li>
@@ -22,5 +22,9 @@ export default {
 <style scoped>
 #contactUsTitle {
   padding: 20px;
+}
+
+#contactUsText {
+  margin-bottom: 20px;
 }
 </style>
