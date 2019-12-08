@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1 id="homeTitle">Home</h1>
     <p id="instruction">Select an event log:</p>
     <SelectEventLogForm :eventLogs="eventLogs" id="eventLogsCombobox" />
   </div>
@@ -77,8 +78,8 @@ body {
   background: #666;
 }
 
-#instruction {
-  padding-top: 20px;
+#homeTitle {
+  padding: 20px;
 }
 
 #eventLogsCombobox {
