@@ -56,6 +56,8 @@ export default {
       model.addLinkData({ from: last_activity_key, to: model.getKeyForNodeData(data) });
       last_activity_key++;
       model.commitTransaction("added Node and Link");
+      event.currentTarget.disabled = true;
+      event.currentTarget.style.background="#999";
     },
     addAllNodes() {
       for (var i = 0; i< 5; i++)
