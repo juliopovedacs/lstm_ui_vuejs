@@ -4,7 +4,8 @@
     <b>Selected log:</b>
     <p id="selectedLogName">{{ this.$route.query.log.name }}</p>
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
-    <button id="predictNextEventButton" @click="addNode">Predict Next Event</button>
+    <button id="predictNextEventButton" @click="addNode" variant="primary">Predict Next Event</button>
+    <button id="predictAlltButton" @click="addAllNodes" variant="primary">Predict All</button>
   </div>
 </template>
 
@@ -55,6 +56,19 @@ export default {
       model.addLinkData({ from: last_activity_key, to: model.getKeyForNodeData(data) });
       last_activity_key++;
       model.commitTransaction("added Node and Link");
+    },
+    addAllNodes() {
+      for (var i = 0; i< 5; i++)
+      {
+        var model = myDiagram.model;
+        model.startTransaction();
+        var new_activity_key = last_activity_key + 1;
+        var data = { key: new_activity_key, text: "New Activity " + new_activity_key, color: "lightblue" };
+        model.addNodeData(data);
+        model.addLinkData({ from: last_activity_key, to: model.getKeyForNodeData(data) });
+        last_activity_key++;
+        model.commitTransaction("added Node and Link");
+      }
     }
   },
   created() {
@@ -72,6 +86,28 @@ export default {
 </script>
 
 <style scoped>
+button {
+  margin-right: 20px;
+  padding: 10px 10px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: rgb(30, 126, 216);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px #999;
+}
+
+button:hover {background-color: rgb(30, 126, 216)}
+
+button:active {
+  background-color: rgb(30, 126, 216);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 #predictTitle {
   padding: 20px;
 }
