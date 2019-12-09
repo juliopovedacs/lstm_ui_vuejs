@@ -71,6 +71,9 @@ export default {
         last_activity_key++;
         model.commitTransaction("added Node and Link");
       }
+
+      event.currentTarget.disabled = true;
+      event.currentTarget.style.background="#999";
     }
   },
   created() {
