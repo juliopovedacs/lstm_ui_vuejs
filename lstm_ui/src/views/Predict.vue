@@ -6,6 +6,7 @@
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
     <button id="predictNextEventButton" @click="addNode" variant="primary">Predict Next Event</button>
     <button id="predictAlltButton" @click="addAllNodes" variant="primary">Predict All</button>
+    <button id="showResultsButton" @click="showResults" variant="primary">Show Results</button>
   </div>
 </template>
 
@@ -74,6 +75,9 @@ export default {
 
       event.currentTarget.disabled = true;
       event.currentTarget.style.background="#999";
+    },
+    showResults() {
+      this.$router.push('results')
     }
   },
   created() {

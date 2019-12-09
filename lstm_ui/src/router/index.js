@@ -24,7 +24,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ContactUs.vue')
+    component: () => import(/* webpackChunkName: "contactUs" */ '../views/ContactUs.vue')
   },
   {
     path: '/predict',
@@ -32,7 +32,15 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Predict.vue')
+    component: () => import(/* webpackChunkName: "predict" */ '../views/Predict.vue')
+  },
+  {
+    path: '/results',
+    name: 'results',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "results" */ '../views/Results.vue')
   }
 ]
 
