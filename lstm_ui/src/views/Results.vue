@@ -3,8 +3,8 @@
     <h1 id="resultsTitle">Results</h1>
     <div class="text-center">
       <div id="statistics">
-        <h2><b>Accuracy: value</b></h2>
-        <h2><b>Distance: value</b></h2>
+        <h3 id="accuracyTitle"><b>Accuracy: value</b></h3>
+        <h3 id="distanceTitle"><b>Distance: value</b></h3>
       </div>
       <canvas id="results-chart"></canvas>
     </div>
@@ -49,6 +49,10 @@ export default {
 
 #statistics {
   margin-bottom: 20px;
+}
+
+#accuracyTitle {
+  margin-bottom: 5px;
 }
 
 #results-chart {

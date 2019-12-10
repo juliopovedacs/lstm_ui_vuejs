@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1>LSTM UI</h1>
+        <h1 id="headerTitle">LSTM UI</h1>
         <div id="nav">
             <router-link to="/">Home</router-link>
             <router-link to="/about">About</router-link>
@@ -28,6 +28,10 @@ export default {
         padding-right: 5px;
         text-decoration: none;
     }
+
+    .links {
+        font-family: Arial, Helvetica, sans-serif;
+    }
     
     #nav a.router-link-exact-active {
         color: rgb(219, 13, 13)
@@ -35,5 +39,9 @@ export default {
 
     #nav a {
         margin-right: 10px;
+    }
+
+    #headerTitle {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 </style>

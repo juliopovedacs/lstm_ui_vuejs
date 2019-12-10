@@ -12,6 +12,10 @@
 
 <script>
 import axios from "axios";
+import * as go from "gojs";
+import { Watch } from "vue-property-decorator";
+
+console.log(Watch);
 
 var last_activity_key = 3;
 
@@ -37,8 +41,6 @@ myDiagram.nodeTemplate = $(
 );
 
 myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-
-import * as go from "gojs";
 
 export default {
   name: "Predict",
@@ -90,6 +92,13 @@ export default {
       .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/`)
       .then(res => (this.runningCases = res.data))
       .catch(err => console.log(err));
+  },
+  watch:{
+    $route (to, from){
+        console.log("Changed view");
+        console.log(to);
+        console.log(from);
+    }
   }
 };
 </script>

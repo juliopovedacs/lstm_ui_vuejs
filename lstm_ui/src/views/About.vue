@@ -22,6 +22,8 @@ export default {
 
 #aboutText {
   margin-bottom: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 iframe {
