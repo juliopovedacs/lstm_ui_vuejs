@@ -2,7 +2,7 @@
 
 Welcome to LSTM UI Vue.js! This is the [LSTM Proposed Approach](https://link.springer.com/chapter/10.1007/978-3-030-26619-6_19) UI.
 
-IMAGE
+![LSTM Proposed Approach UI Main Page](https://raw.githubusercontent.com/japoveda10/lstm_ui_vuejs/master/IMAGE.png)
 
 ## What is it?
 
