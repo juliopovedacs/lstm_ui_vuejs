@@ -14,6 +14,16 @@ The UI is built using a JavaScript framework called [Vue.js](https://vuejs.org).
 
 ## How can I run it?
 
+### Prerequisites
+
+Before you run this project, make sure you have the following installed on your computer:
+
+- [Node.js](https://nodejs.org/es/)
+- [Vue.js](https://vuejs.org/v2/guide/installation.html)
+- [Vue CLI](https://cli.vuejs.org)
+
+### Instructions to run the project
+
 1. Download this GitHub repository:
 
    ```
