@@ -20,27 +20,11 @@ console.log(Watch);
 var last_activity_key = 3;
 
 var $ = go.GraphObject.make;
+
 var myDiagram = $(go.Diagram, "myDiagramDiv", {
+  contentAlignment: go.Spot.Center,
   "undoManager.isEnabled": true
 });
-var nodeDataArray = [
-  { key: 1, text: "Activity 1", color: "lightblue" },
-  { key: 2, text: "Activity 2", color: "lightblue" },
-  { key: 3, text: "Activity 3", color: "lightblue" }
-];
-var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
-
-myDiagram.nodeTemplate = $(
-  go.Node,
-  "Auto",
-  $(go.Shape, {
-    figure: "RoundedRectangle",
-    fill: "lightblue"
-  }),
-  $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
-);
-
-myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
 export default {
   name: "Predict",
@@ -54,32 +38,49 @@ export default {
       var model = myDiagram.model;
       model.startTransaction();
       var new_activity_key = last_activity_key + 1;
-      var data = { key: new_activity_key, text: "New Activity " + new_activity_key, color: "lightblue" };
+      var data = {
+        key: new_activity_key,
+        text: "New Activity " + new_activity_key,
+        color: "lightblue"
+      };
       model.addNodeData(data);
-      model.addLinkData({ from: last_activity_key, to: model.getKeyForNodeData(data) });
+      model.addLinkData({
+        from: last_activity_key,
+        to: model.getKeyForNodeData(data)
+      });
       last_activity_key++;
       model.commitTransaction("added Node and Link");
       event.currentTarget.disabled = true;
-      event.currentTarget.style.background="#999";
+      event.currentTarget.style.background = "#999";
     },
     addAllNodes() {
-      for (var i = 0; i< 5; i++)
-      {
+      for (var i = 0; i < 5; i++) {
         var model = myDiagram.model;
         model.startTransaction();
         var new_activity_key = last_activity_key + 1;
-        var data = { key: new_activity_key, text: "New Activity " + new_activity_key, color: "lightblue" };
+        var data = {
+          key: new_activity_key,
+          text: "New Activity " + new_activity_key,
+          color: "lightblue"
+        };
         model.addNodeData(data);
-        model.addLinkData({ from: last_activity_key, to: model.getKeyForNodeData(data) });
+        model.addLinkData({
+          from: last_activity_key,
+          to: model.getKeyForNodeData(data)
+        });
         last_activity_key++;
         model.commitTransaction("added Node and Link");
       }
 
+      var predictNextButton = document.getElementById("predictNextEventButton")
+      predictNextButton.disabled = true;
+      predictNextButton.style.background = "#999";
+
       event.currentTarget.disabled = true;
-      event.currentTarget.style.background="#999";
+      event.currentTarget.style.background = "#999";
     },
     showResults() {
-      this.$router.push('results')
+      this.$router.push("results");
     }
   },
   created() {
@@ -93,13 +94,35 @@ export default {
       .then(res => (this.runningCases = res.data))
       .catch(err => console.log(err));
   },
-  watch:{
-    $route (to, from){
-        console.log("Changed view");
-        console.log(to);
-        console.log(from);
-    }
-  }
+  beforeRouteEnter(to, from, next) {
+    console.log(to);
+    console.log(from);
+    console.log(next);
+    last_activity_key = 3;
+    myDiagram.div = null;
+    myDiagram = $(go.Diagram, "myDiagramDiv", {
+      contentAlignment: go.Spot.Center,
+      "undoManager.isEnabled": true
+    });
+    var nodeDataArray = [
+      { key: 1, text: "Activity 1", color: "lightblue" },
+      { key: 2, text: "Activity 2", color: "lightblue" },
+      { key: 3, text: "Activity 3", color: "lightblue" }
+    ];
+    var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
+
+    myDiagram.nodeTemplate = $(
+      go.Node,
+      "Auto",
+      $(go.Shape, {
+        figure: "RoundedRectangle",
+        fill: "lightblue"
+      }),
+      $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
+    );
+    myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+    next();
+  },
 };
 </script>
 
@@ -118,7 +141,9 @@ button {
   box-shadow: 0 8px #999;
 }
 
-button:hover {background-color: rgb(30, 126, 216)}
+button:hover {
+  background-color: rgb(30, 126, 216);
+}
 
 button:active {
   background-color: rgb(30, 126, 216);
