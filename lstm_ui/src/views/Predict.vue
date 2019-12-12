@@ -102,7 +102,8 @@ export default {
     myDiagram.div = null;
     myDiagram = $(go.Diagram, "myDiagramDiv", {
       contentAlignment: go.Spot.Center,
-      "undoManager.isEnabled": true
+      "undoManager.isEnabled": true,
+      layout: $(go.TreeLayout)
     });
     var nodeDataArray = [
       { key: 1, text: "Activity 1", color: "lightblue" },
