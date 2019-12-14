@@ -24,7 +24,7 @@ Before you run this project, make sure you have the following installed on your 
 
 ### Instructions to run the project
 
-**Important:** first, you need to run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the steps:
+**Important:** first, you need to run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:
 
 1. Download this GitHub repository:
 
@@ -38,11 +38,15 @@ Before you run this project, make sure you have the following installed on your 
    $ cd lstm_ui_vuejs
    ```
 
-3. Execute the following commands:
+3. Execute the following command (inside the same folder of the package.json file):
 
    ```
    $ npm install
    ```
+   
+   The ```$ npm install``` command installs the project's dependencies based on the package.json file. After its execution, a ```node_modules``` directory is created.
+
+4. Execute the following command:
    
    ```
    $ vue ui
