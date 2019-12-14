@@ -13,6 +13,8 @@
     <b>Selected log:</b>
     <p id="selectedLogName">{{ this.$route.query.log.name }}</p>
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
+    <b id="runningCasesTitle">Running Cases:</b>
+    <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
     <button id="predictNextEventButton" @click="addNode" variant="primary">Predict Next Event</button>
     <button id="predictAlltButton" @click="addAllNodes" variant="primary">Predict All</button>
     <button id="showResultsButton" @click="showResults" variant="primary">Show Results</button>
@@ -24,6 +26,7 @@
 import axios from "axios";
 import * as go from "gojs";
 import { Watch } from "vue-property-decorator";
+import SelectRunningCaseForm from "../components/SelectRunningCaseForm";
 
 console.log(Watch);
 
@@ -38,6 +41,9 @@ var myDiagram = $(go.Diagram, "myDiagramDiv", {
 
 export default {
   name: "Predict",
+  components: {
+    SelectRunningCaseForm
+  },
   data() {
     return {
       runningCases: []
@@ -95,6 +101,10 @@ export default {
   },
   created() {
     document.getElementById("myDiagramDiv").style.display = "block";
+    axios
+      .get("http://127.0.0.1:8000/running_cases/")
+      .then(res => (this.eventLogs = res.data))
+      .catch(err => console.log(err));
   },
   mounted() {
     var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
@@ -167,11 +177,15 @@ button:active {
   padding: 20px;
 }
 
-#predictNextEventButton {
+#selectedLogName {
   margin-bottom: 20px;
 }
 
-#selectedLogName {
+#runningCasesComboBox {
+  margin-bottom: 20px;
+}
+
+#predictNextEventButton {
   margin-bottom: 20px;
 }
 
