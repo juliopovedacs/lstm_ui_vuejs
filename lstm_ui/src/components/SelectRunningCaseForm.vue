@@ -9,7 +9,7 @@
 <!-- HTML -->
 <template>
   <div>
-    <dropdown :options="this.runningCases" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>
+    <dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>
   </div>
 </template>
 
@@ -23,11 +23,22 @@ export default {
       runningCases: Array
     },
     data() {
-        return {
-            object: {
-              name: 'Running Case',
-            }
+      return {
+        arrayOfObjects: [
+          {
+            name: "Running Case 1"
+          },
+          {
+            name: "Running Case 2"
+          },
+          {
+            name: "Running Case 3"
+          }
+        ],
+        object: {
+          name: 'Running Case',
         }
+      }
     },
     components: {
         'dropdown': dropdown,
@@ -35,6 +46,7 @@ export default {
     methods: {
         methodToRunOnSelect(payload) {
           this.object = payload;
+          // Tell parent to show Running Case
         }
       }
 };
