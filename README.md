@@ -1,12 +1,12 @@
 # LSTM UI Vue.js
 
-Welcome to LSTM UI Vue.js! This is the [LSTM Proposed Approach](https://link.springer.com/chapter/10.1007/978-3-030-26619-6_19) UI.
+Welcome!
 
 ![LSTM Proposed Approach UI Main Page](https://raw.githubusercontent.com/japoveda10/lstm_ui_vuejs/master/IMAGE.png)
 
 ## What is it?
 
-This is the User Interface of [GenerativeLSTM](https://github.com/AdaptiveBProcess/GenerativeLSTM), an application that builds and uses generative models from event logs using LSTM neural networks.
+This is the User Interface of [GenerativeLSTM](https://github.com/AdaptiveBProcess/GenerativeLSTM), an application that builds and uses generative models from event logs using LSTM neural networks. For more information about this project, click [here](https://link.springer.com/chapter/10.1007/978-3-030-26619-6_19).
 
 ## How is it built?
 
