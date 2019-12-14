@@ -60,7 +60,7 @@ Before you run this project, make sure you have the following installed on your 
 
 7. Click on the **Execute task** button
 
-8. After the project finishes building, click on the **Open application** button A new tab will appear showing the project running
+8. After the project finishes building, click on the **Open application** button. A new tab will appear with the project running
 
 ## Questions and Suggestions
 
