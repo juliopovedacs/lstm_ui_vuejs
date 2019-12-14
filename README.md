@@ -24,7 +24,7 @@ Before you run this project, make sure you have the following installed on your 
 
 ### Instructions to run the project
 
-**Important:** first, you need to run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:
+**Important:** first, you need to download and run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:
 
 1. Download this GitHub repository:
 
@@ -51,6 +51,16 @@ Before you run this project, make sure you have the following installed on your 
    ```
    $ vue ui
    ```
+   
+   This command will open the **Vue CLI UI** in your default browser.
+
+5. Click on **Tasks** on the left menu
+
+6. Click on the **serve** button
+
+7. Click on the **Execute task** button
+
+8. After the project finishes building, click on the **Open application** button A new tab will appear showing the project running
 
 ## Questions and Suggestions
 
