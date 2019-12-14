@@ -8,7 +8,7 @@ Welcome!
 
 This is the User Interface of [GenerativeLSTM](https://github.com/AdaptiveBProcess/GenerativeLSTM), an application that builds and uses generative models from event logs using LSTM neural networks. For more information about this project, click [here](https://link.springer.com/chapter/10.1007/978-3-030-26619-6_19).
 
-## How is it built?
+## How was it built?
 
 The UI is built using a JavaScript framework called [Vue.js](https://vuejs.org). This project also uses [GoJS](https://gojs.net/latest/index.html) and [Chart.js](https://www.chartjs.org).
 
