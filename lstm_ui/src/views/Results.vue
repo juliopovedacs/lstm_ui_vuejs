@@ -67,7 +67,8 @@ export default {
 }
 
 #results-chart {
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 10px;
 }
 </style>

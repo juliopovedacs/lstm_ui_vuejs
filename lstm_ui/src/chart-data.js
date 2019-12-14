@@ -30,7 +30,7 @@ export const resultsChartData = {
     title: {
         display : true,
         text : "Results of Remaining Cycle-Time MAE in Days",
-        fontSize : 22.0
+        fontSize : 25.0,
      },
     scales: {
         yAxes: [{
@@ -56,6 +56,8 @@ export const resultsChartData = {
         }]
       },
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 3,
       lineTension: 1,
     }
   }
