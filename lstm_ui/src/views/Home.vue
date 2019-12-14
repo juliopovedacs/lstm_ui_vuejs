@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# Home.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
   <div id="app">
     <h1 id="homeTitle">Home</h1>
@@ -6,6 +15,7 @@
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 import axios from "axios";
 import SelectEventLogForm from "../components/SelectEventLogForm";
@@ -53,6 +63,7 @@ export default {
 };
 </script>
 
+<!-- CSS -->
 <style>
 * {
   box-sizing: border-box;

@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# ContactUs.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
   <div class="contactUs">
     <h1 id="contactUsTitle">Contact us</h1>
@@ -10,6 +19,7 @@
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 export default {
   name: "ContactUs",
@@ -19,6 +29,7 @@ export default {
 }
 </script>
 
+<!-- CSS -->
 <style scoped>
 #contactUsTitle {
   padding: 20px;

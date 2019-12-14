@@ -1,9 +1,19 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# SelectEventLogForm.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
   <div>
     <dropdown :options="this.eventLogs" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 import dropdown from 'vue-dropdowns';
 
@@ -31,5 +41,6 @@ export default {
 };
 </script>
 
+<!-- CSS -->
 <style scoped>
 </style>

@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# About.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
   <div class="about">
     <h1 id="aboutTitle">About</h1>
@@ -6,6 +15,7 @@
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 export default {
   name: "About",
@@ -15,6 +25,7 @@ export default {
 }
 </script>
 
+<!-- CSS -->
 <style scoped>
 #aboutTitle {
   padding: 20px;

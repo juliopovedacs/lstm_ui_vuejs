@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# App.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
 <div id="app">
   <Header />
@@ -5,6 +14,7 @@
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 import Header from "./components/layout/Header";
 
@@ -16,6 +26,7 @@ export default {
 };
 </script>
 
+<!-- CSS -->
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

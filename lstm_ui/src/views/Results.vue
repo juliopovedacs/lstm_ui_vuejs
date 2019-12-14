@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# Results.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
   <div class="results">
     <h1 id="resultsTitle">Results</h1>
@@ -11,6 +20,7 @@
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 import Chart from "chart.js";
 import resultsChartData from "../chart-data";
@@ -42,6 +52,7 @@ export default {
 };
 </script>
 
+<!-- CSS -->
 <style scoped>
 #resultsTitle {
   padding: 20px;

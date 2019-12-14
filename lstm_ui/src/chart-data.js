@@ -1,3 +1,11 @@
+/**
+#------------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# chart-data.js
+#------------------------------------------------------------------------------
+*/
+
 export const resultsChartData = {
     type: 'bar',
     title: 'Results of Remaining Cycle-Time MAE in Days',

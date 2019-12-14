@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# Predict.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
   <div class="row justify-content-center">
     <h1 id="predictTitle">Predict</h1>
@@ -10,6 +19,7 @@
   </div>
 </template>
 
+<!-- JavaScript -->
 <script>
 import axios from "axios";
 import * as go from "gojs";
@@ -127,6 +137,7 @@ export default {
 };
 </script>
 
+<!-- CSS -->
 <style scoped>
 button {
   margin-right: 20px;
