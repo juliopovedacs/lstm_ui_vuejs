@@ -44,7 +44,7 @@ Before you run this project, make sure you have the following installed on your 
    $ npm install
    ```
    
-   The ```$ npm install``` command installs the project's dependencies based on the package.json file. After its execution, a ```node_modules``` directory is created.
+   The ```npm install``` command installs the project's dependencies based on the package.json file. After its execution, a ```node_modules``` directory is created.
 
 4. Execute the following command:
    
