@@ -9,9 +9,14 @@
 <!-- HTML -->
 <template>
   <div>
-    <button id="predictNextEventButton" @click="addNode" variant="primary">Predict Next Event</button>
-    <button id="predictAlltButton" @click="addAllNodes" variant="primary">Predict All</button>
-    <button id="showResultsButton" @click="showResults" variant="primary">Show Results</button>
+    <div>
+      <button id="predictNextEventButton" @click="addNode" variant="primary">Predict Next Event</button>
+      <button id="predictAlltButton" @click="addAllNodes" variant="primary">Predict All</button>
+      <button id="showResultsButton" @click="showResults" variant="primary">Show Results</button>
+    </div>
+    <div>
+      <div id="myDiagramDiv" style="width: 100%; height: 300px; border: 1px solid black;"></div>
+    </div>
   </div>
 </template>
 

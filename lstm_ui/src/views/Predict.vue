@@ -15,7 +15,7 @@
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
     <b id="runningCasesTitle">Running Cases:</b>
     <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
-    <!-- <RunningCase /> -->
+    <!--<RunningCase v-if="showRunningCase" /> -->
   </div>
 </template>
 
@@ -33,7 +33,8 @@ export default {
   },
   data() {
     return {
-      runningCases: []
+      runningCases: [],
+      showRunningCase: true,
     };
   },
   methods: {
@@ -41,8 +42,7 @@ export default {
       this.$router.push("results");
     }
   },
-  created() {
-    document.getElementById("myDiagramDiv").style.display = "none";
+  mounted() {
     var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
     console.log(eventLogId);
     axios
