@@ -23,8 +23,8 @@
 <!-- JavaScript -->
 <script>
 import * as go from "gojs";
+import {bus} from "../main";
 
-var last_activity_key = 3;
 var $ = go.GraphObject.make;
 var myDiagram;
 
@@ -33,6 +33,7 @@ export default {
   props: {
     nodes: Array,
     links: Array,
+    lastActivityKey: Number,
   },
   data() {
     return {
@@ -43,15 +44,12 @@ export default {
   },
   methods: {
     createDiagram() {
-      last_activity_key = 3;
-
       myDiagram = $(go.Diagram, "myDiagramDiv", {
         contentAlignment: go.Spot.Center,
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout)
       });
 
-      console.log("RunningCase will create a running case with " + this.nodes.length + " nodes");
       var nodeDataArray = this.nodes;
       var linkDataArray = this.links;
 
@@ -67,55 +65,13 @@ export default {
       myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     },
     addNode() {
-      var model = myDiagram.model;
-      model.startTransaction();
-      var new_activity_key = last_activity_key + 1;
-      var data = {
-        key: new_activity_key,
-        text: "New Activity " + new_activity_key,
-        color: "lightblue"
-      };
-      model.addNodeData(data);
-      model.addLinkData({
-        from: last_activity_key,
-        to: model.getKeyForNodeData(data)
-      });
-      last_activity_key++;
-      model.commitTransaction("added Node and Link");
-      event.currentTarget.disabled = true;
-      event.currentTarget.style.background = "#999";
+      this.$emit("nextEvent");
     },
     addAllNodes() {
-      for (var i = 0; i < 5; i++) {
-        var model = myDiagram.model;
-        model.startTransaction();
-        var new_activity_key = last_activity_key + 1;
-        var data = {
-          key: new_activity_key,
-          text: "New Activity " + new_activity_key,
-          color: "lightblue"
-        };
-        model.addNodeData(data);
-        model.addLinkData({
-          from: last_activity_key,
-          to: model.getKeyForNodeData(data)
-        });
-        last_activity_key++;
-        model.commitTransaction("added Node and Link");
-      }
-
-      // Disable predictNextButton
-      var predictNextButton = document.getElementById("predictNextEventButton");
-      predictNextButton.disabled = true;
-      predictNextButton.style.background = "#999";
-
-      // Disable predictAllButton
-      event.currentTarget.disabled = true;
-      event.currentTarget.style.background = "#999";
+        this.addNode();
+        this.addNode();
     },
     updateDiagram() {
-      console.log("Diagram will be updated");
-      console.log("Number of nodes: " + this.nodes.length);
       myDiagram.div = null;
       this.createDiagram();
     },
@@ -124,19 +80,9 @@ export default {
     }
   },
   mounted() {
-    this.createDiagram()
+    this.createDiagram(3)
+    bus.$on('updateDiagram', this.updateDiagram);
   },
-  beforeRouteEnter(to, from, next) {
-    console.log(to);
-    console.log(from);
-    console.log(next);
-
-    // Reset values when user changes route
-    this.updateDiagram();
-    
-    // Go to requested route
-    next();
-  }
 };
 </script>
 
