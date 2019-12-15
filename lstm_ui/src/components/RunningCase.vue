@@ -23,7 +23,6 @@
 <!-- JavaScript -->
 <script>
 import * as go from "gojs";
-import {bus} from "../main";
 
 var $ = go.GraphObject.make;
 var myDiagram;
@@ -80,8 +79,7 @@ export default {
     }
   },
   mounted() {
-    this.createDiagram(3)
-    bus.$on('updateDiagram', this.updateDiagram);
+    this.createDiagram()
   },
 };
 </script>

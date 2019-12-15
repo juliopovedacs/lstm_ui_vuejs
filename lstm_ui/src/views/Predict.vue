@@ -15,7 +15,7 @@
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
     <b id="runningCasesTitle">Running Cases:</b>
     <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
-    <RunningCase id="runningCase" ref="runningCaseChild" v-if="showRunningCase" v-bind:nodes="selectedRunningCaseNodeDataArray" v-bind:links="selectedRunningCaseLinkDataArray" v-bind:lastActivityKey="runningCaseLastActivityKey" @lastActivityKeyChanged="updateLastActivityKey" @nextEvent="predictNextEvent" />
+    <RunningCase id="runningCase" ref="runningCaseChild" v-if="showRunningCase" v-bind:nodes="selectedRunningCaseNodeDataArray" v-bind:links="selectedRunningCaseLinkDataArray" v-bind:lastActivityKey="selectedRunningCaseLastActivityKey" @lastActivityKeyChanged="updateLastActivityKey" @nextEvent="predictNextEvent" />
   </div>
 </template>
 
@@ -24,7 +24,6 @@
 import axios from "axios";
 import SelectRunningCaseForm from "../components/SelectRunningCaseForm";
 import RunningCase from "../components/RunningCase";
-import {bus} from "../main";
 
 var timesRunningCaseSelectedInSameView = 0;
 
@@ -65,6 +64,7 @@ export default {
       selectedRunningCaseNodeDataArray: [],
       selectedRunningCaseLinkDataArray: [],
       selectedRunningCaseLastActivityKey: 0,
+      runningCases: [],
     };
   },
   methods: {
@@ -103,7 +103,7 @@ export default {
       {
 
         // Update diagram when user selects a running case
-        bus.$emit('updateDiagram');
+        this.$refs.runningCaseChild.updateDiagram();
       }
 
       this.showRunningCase = true;
