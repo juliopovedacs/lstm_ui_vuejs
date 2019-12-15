@@ -41,6 +41,34 @@ export default {
     };
   },
   methods: {
+    createDiagram() {
+      last_activity_key = 3;
+
+      myDiagram = $(go.Diagram, "myDiagramDiv", {
+        contentAlignment: go.Spot.Center,
+        "undoManager.isEnabled": true,
+        layout: $(go.TreeLayout)
+      });
+
+      var nodeDataArray = [
+        { key: 1, text: "Activity 1", color: "lightblue" },
+        { key: 2, text: "Activity 2", color: "lightblue" },
+        { key: 3, text: "Activity 3", color: "lightblue" }
+      ];
+      
+      var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
+
+      myDiagram.nodeTemplate = $(
+        go.Node,
+        "Auto",
+        $(go.Shape, {
+          figure: "RoundedRectangle",
+          fill: "lightblue"
+        }),
+        $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
+      );
+      myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+    },
     addNode() {
       var model = myDiagram.model;
       model.startTransaction();
@@ -79,10 +107,12 @@ export default {
         model.commitTransaction("added Node and Link");
       }
 
+      // Disable predictNextButton
       var predictNextButton = document.getElementById("predictNextEventButton");
       predictNextButton.disabled = true;
       predictNextButton.style.background = "#999";
 
+      // Disable predictAllButton
       event.currentTarget.disabled = true;
       event.currentTarget.style.background = "#999";
     },
@@ -91,60 +121,20 @@ export default {
     }
   },
   mounted() {
-    myDiagram = $(go.Diagram, "myDiagramDiv", {
-      contentAlignment: go.Spot.Center,
-      "undoManager.isEnabled": true,
-      layout: $(go.TreeLayout)
-    });
-
-    var nodeDataArray = [
-      { key: 1, text: "Activity 1", color: "lightblue" },
-      { key: 2, text: "Activity 2", color: "lightblue" },
-      { key: 3, text: "Activity 3", color: "lightblue" }
-    ];
-    var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
-
-    myDiagram.nodeTemplate = $(
-      go.Node,
-      "Auto",
-      $(go.Shape, {
-        figure: "RoundedRectangle",
-        fill: "lightblue"
-      }),
-      $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
-    );
-    myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-
-    console.log(myDiagram);
+    this.createDiagram()
   },
   beforeRouteEnter(to, from, next) {
     console.log(to);
     console.log(from);
     console.log(next);
-    last_activity_key = 3;
-    myDiagram.div = null;
-    myDiagram = $(go.Diagram, "myDiagramDiv", {
-      contentAlignment: go.Spot.Center,
-      "undoManager.isEnabled": true,
-      layout: $(go.TreeLayout)
-    });
-    var nodeDataArray = [
-      { key: 1, text: "Activity 1", color: "lightblue" },
-      { key: 2, text: "Activity 2", color: "lightblue" },
-      { key: 3, text: "Activity 3", color: "lightblue" }
-    ];
-    var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
 
-    myDiagram.nodeTemplate = $(
-      go.Node,
-      "Auto",
-      $(go.Shape, {
-        figure: "RoundedRectangle",
-        fill: "lightblue"
-      }),
-      $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
-    );
-    myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+    // Reset values
+    myDiagram.div = null;
+
+    // Create new diagram
+    this.createDiagram();
+    
+    // Go to requested route
     next();
   }
 };
