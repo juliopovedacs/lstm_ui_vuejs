@@ -46,7 +46,8 @@ export default {
     methods: {
         methodToRunOnSelect(payload) {
           this.object = payload;
-          // Tell parent to show Running Case
+          console.log("Show running case");
+          this.$parent.showSelectedRunningCase();
         }
       }
 };

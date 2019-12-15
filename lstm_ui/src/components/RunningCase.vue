@@ -23,18 +23,10 @@
 <!-- JavaScript -->
 <script>
 import * as go from "gojs";
-import { Watch } from "vue-property-decorator";
-
-console.log(Watch);
 
 var last_activity_key = 3;
-
 var $ = go.GraphObject.make;
-
-var myDiagram = $(go.Diagram, "myDiagramDiv", {
-  contentAlignment: go.Spot.Center,
-  "undoManager.isEnabled": true
-});
+var myDiagram;
 
 export default {
   name: "SelectRunningCaseForm",
@@ -49,9 +41,6 @@ export default {
     };
   },
   methods: {
-    methodToRunOnSelect(payload) {
-      this.object = payload;
-    },
     addNode() {
       var model = myDiagram.model;
       model.startTransaction();
@@ -97,9 +86,36 @@ export default {
       event.currentTarget.disabled = true;
       event.currentTarget.style.background = "#999";
     },
+    showResults() {
+      this.$parent.showResults();
+    }
   },
-  created() {
-    document.getElementById("myDiagramDiv").style.display = "block";
+  mounted() {
+    myDiagram = $(go.Diagram, "myDiagramDiv", {
+      contentAlignment: go.Spot.Center,
+      "undoManager.isEnabled": true,
+      layout: $(go.TreeLayout)
+    });
+
+    var nodeDataArray = [
+      { key: 1, text: "Activity 1", color: "lightblue" },
+      { key: 2, text: "Activity 2", color: "lightblue" },
+      { key: 3, text: "Activity 3", color: "lightblue" }
+    ];
+    var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
+
+    myDiagram.nodeTemplate = $(
+      go.Node,
+      "Auto",
+      $(go.Shape, {
+        figure: "RoundedRectangle",
+        fill: "lightblue"
+      }),
+      $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
+    );
+    myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+    console.log(myDiagram);
   },
   beforeRouteEnter(to, from, next) {
     console.log(to);

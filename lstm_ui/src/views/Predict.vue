@@ -15,7 +15,7 @@
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
     <b id="runningCasesTitle">Running Cases:</b>
     <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
-    <!--<RunningCase v-if="showRunningCase" /> -->
+    <RunningCase v-if="showRunningCase" />
   </div>
 </template>
 
@@ -23,23 +23,27 @@
 <script>
 import axios from "axios";
 import SelectRunningCaseForm from "../components/SelectRunningCaseForm";
-//import RunningCase from "../components/RunningCase";
+import RunningCase from "../components/RunningCase";
 
 export default {
   name: "Predict",
   components: {
     SelectRunningCaseForm,
-    //RunningCase
+    RunningCase
   },
   data() {
     return {
       runningCases: [],
-      showRunningCase: true,
+      showRunningCase: false,
     };
   },
   methods: {
     showResults() {
       this.$router.push("results");
+    },
+    showSelectedRunningCase() {
+      console.log("Hello Predict");
+      this.showRunningCase = true;
     }
   },
   mounted() {
