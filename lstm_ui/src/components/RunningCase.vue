@@ -31,7 +31,8 @@ var myDiagram;
 export default {
   name: "SelectRunningCaseForm",
   props: {
-    runningCases: Array
+    nodes: Array,
+    links: Array,
   },
   data() {
     return {
@@ -50,13 +51,9 @@ export default {
         layout: $(go.TreeLayout)
       });
 
-      var nodeDataArray = [
-        { key: 1, text: "Activity 1", color: "lightblue" },
-        { key: 2, text: "Activity 2", color: "lightblue" },
-        { key: 3, text: "Activity 3", color: "lightblue" }
-      ];
-      
-      var linkDataArray = [{ from: 1, to: 2 }, { from: 2, to: 3 }];
+      console.log("RunningCase will create a running case with " + this.nodes.length + " nodes");
+      var nodeDataArray = this.nodes;
+      var linkDataArray = this.links;
 
       myDiagram.nodeTemplate = $(
         go.Node,
@@ -116,6 +113,12 @@ export default {
       event.currentTarget.disabled = true;
       event.currentTarget.style.background = "#999";
     },
+    updateDiagram() {
+      console.log("Diagram will be updated");
+      console.log("Number of nodes: " + this.nodes.length);
+      myDiagram.div = null;
+      this.createDiagram();
+    },
     showResults() {
       this.$parent.showResults();
     }
@@ -128,11 +131,8 @@ export default {
     console.log(from);
     console.log(next);
 
-    // Reset values
-    myDiagram.div = null;
-
-    // Create new diagram
-    this.createDiagram();
+    // Reset values when user changes route
+    this.updateDiagram();
     
     // Go to requested route
     next();
