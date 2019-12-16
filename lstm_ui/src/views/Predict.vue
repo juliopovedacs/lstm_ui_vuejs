@@ -25,8 +25,6 @@ import axios from "axios";
 import SelectRunningCaseForm from "../components/SelectRunningCaseForm";
 import RunningCase from "../components/RunningCase";
 
-var timesRunningCaseSelectedInSameView = 0;
-
 var runningCase1NodeDataArray = [
   { key: 1, text: "Activity 1", color: "lightblue" },
   { key: 2, text: "Activity 2", color: "lightblue" },
@@ -65,6 +63,7 @@ export default {
       selectedRunningCaseLinkDataArray: [],
       selectedRunningCaseLastActivityKey: 0,
       runningCases: [],
+      timesRunningCaseSelectedInSameView: 0,
     };
   },
   methods: {
@@ -73,7 +72,7 @@ export default {
     },
     showSelectedRunningCase(runningCaseName) {
       console.log("Predict: received request to show " + runningCaseName);
-      timesRunningCaseSelectedInSameView = timesRunningCaseSelectedInSameView + 1;
+      this.timesRunningCaseSelectedInSameView = this.timesRunningCaseSelectedInSameView + 1;
 
       this.showRunningCase = false;
 
@@ -99,7 +98,7 @@ export default {
         this.selectedRunningCaseLastActivityKey = runningCase3NodeDataArray.length;
       }
       
-      if (timesRunningCaseSelectedInSameView > 1)
+      if (this.timesRunningCaseSelectedInSameView > 1)
       {
         // Update diagram when user selects another running case
         this.$refs.runningCaseChild.updateDiagram();
@@ -128,16 +127,6 @@ export default {
       .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/`)
       .then(res => (this.runningCases = res.data))
       .catch(err => console.log(err));
-  },
-  beforeRouteLeave(to, from, next) {
-    console.log(to);
-    console.log(from);
-    console.log(next);
-
-    this.selectedRunningCaseNodeDataArray = this.runningCase1NodeDataArray;
-    this.selectedRunningCaseLinkDataArray = this.runningCase1LinkDataArray;
-
-    next();
   }
 };
 </script>
