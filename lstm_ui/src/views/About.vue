@@ -19,9 +19,6 @@
 <script>
 export default {
   name: "About",
-  created() {
-    document.getElementById("myDiagramDiv").style.display = "none";
-  }
 }
 </script>
 

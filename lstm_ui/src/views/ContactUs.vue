@@ -23,9 +23,6 @@
 <script>
 export default {
   name: "ContactUs",
-  created() {
-    document.getElementById("myDiagramDiv").style.display = "none";
-  }
 }
 </script>
 

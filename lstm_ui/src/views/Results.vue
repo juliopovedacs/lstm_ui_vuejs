@@ -46,7 +46,6 @@
 import axios from "axios";
 import Chart from "chart.js";
 import resultsChartData from "../chart-data";
-import $ from "jquery";
 
 export default {
   name: "Results",
@@ -95,10 +94,6 @@ export default {
     this.selectedEventLogSimilarity = 0.74;
   }
 };
-
-$(document).ready(function() {
-  $('[data-toggle="popover"]').popover();
-});
 </script>
 
 <!-- CSS -->
