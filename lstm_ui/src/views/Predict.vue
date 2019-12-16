@@ -101,8 +101,7 @@ export default {
       
       if (timesRunningCaseSelectedInSameView > 1)
       {
-
-        // Update diagram when user selects a running case
+        // Update diagram when user selects another running case
         this.$refs.runningCaseChild.updateDiagram();
       }
 

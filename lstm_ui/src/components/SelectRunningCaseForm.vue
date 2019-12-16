@@ -46,7 +46,6 @@ export default {
     methods: {
         methodToRunOnSelect(payload) {
           this.object = payload;
-          console.log("SelectRunningCaseForm: the " + this.object.name + " has been selected");
           this.$parent.showSelectedRunningCase(this.object.name);
         }
       }
