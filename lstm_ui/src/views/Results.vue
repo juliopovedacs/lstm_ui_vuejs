@@ -22,6 +22,7 @@
 
 <!-- JavaScript -->
 <script>
+import axios from "axios";
 import Chart from "chart.js";
 import resultsChartData from "../chart-data";
 
@@ -48,6 +49,12 @@ export default {
   },
   mounted() {
     this.createChart('results-chart', this.resultsChartData);
+    var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
+
+      axios
+        .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/results/`)
+        .then(res => (this.selectedRunningCaseActivities = res.data))
+        .catch(err => console.log(err));
   }
 };
 </script>

@@ -26,12 +26,15 @@ export default {
       return {
         arrayOfObjects: [
           {
+            id: 1,
             name: "Running Case 1"
           },
           {
+            id: 2,
             name: "Running Case 2"
           },
           {
+            id: 3,
             name: "Running Case 3"
           }
         ],
@@ -46,7 +49,7 @@ export default {
     methods: {
         methodToRunOnSelect(payload) {
           this.object = payload;
-          this.$parent.showSelectedRunningCase(this.object.name);
+          this.$parent.showSelectedRunningCase(this.object.name, this.object.id);
         }
       }
 };

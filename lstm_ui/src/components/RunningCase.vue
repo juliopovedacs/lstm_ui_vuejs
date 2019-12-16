@@ -64,11 +64,10 @@ export default {
       myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
     },
     addNode() {
-      this.$emit("nextEvent");
+      this.$emit("predictNext");
     },
     addAllNodes() {
-        this.addNode();
-        this.addNode();
+      this.$emit("predictAll");
     },
     updateDiagram() {
       myDiagram.div = null;
