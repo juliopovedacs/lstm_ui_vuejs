@@ -76,6 +76,8 @@ export default {
   },
   data() {
     return {
+      selectedEventLogId: 0,
+      selectedEventLogName: "",
       runningCases: [],
       showRunningCase: false,
       selectedRunningCaseName: "",
@@ -89,7 +91,7 @@ export default {
   },
   methods: {
     showResults() {
-      this.$router.push("results");
+      this.$router.push({ path: "/results", query: {eventLogId: this.selectedEventLogId, eventLogName: this.selectedEventLogName } });
     },
     showSelectedRunningCase(runningCaseName, runningCaseId) {
       console.log("Predict: received request to show " + runningCaseName);
@@ -197,6 +199,11 @@ export default {
   },
   mounted() {
     var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
+    var eventLogName = document.getElementById("selectedLogName").innerHTML;
+
+    this.selectedEventLogId = eventLogId;
+    this.selectedEventLogName = eventLogName;
+
     console.log(eventLogId);
     axios
       .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/`)

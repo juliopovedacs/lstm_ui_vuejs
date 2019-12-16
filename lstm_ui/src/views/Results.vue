@@ -10,10 +10,15 @@
 <template>
   <div class="results">
     <h1 id="resultsTitle">Results</h1>
+    <h4>Selected log:</h4>
+    <p id="selectedLogName">{{ this.$route.query.eventLogName }}</p>
+    <p id="eventLogIdParagraph" hidden>{{ this.$route.query.eventLogId }}</p>
     <div class="text-center">
       <div id="statistics">
-        <h3 id="accuracyTitle"><b>Accuracy: value</b></h3>
-        <h3 id="distanceTitle"><b>Distance: value</b></h3>
+        <h4 id="accuracyTitle"><b>Accuracy:</b></h4>
+        <p id="accuracyValue">{{ this.selectedEventLogAccuracy }}</p>
+        <h4 id="similarityTitle"><b>Similarity:</b></h4>
+        <p id="similarityValue">{{ this.selectedEventLogSimilarity }}</p>
       </div>
       <canvas id="results-chart"></canvas>
     </div>
@@ -28,6 +33,13 @@ import resultsChartData from "../chart-data";
 
 export default {
   name: "Results",
+  props: {
+    selectedEventLogId: Number,
+    selectedEventLogName: String,
+    selectedEventLogResults: Array,
+    selectedEventLogAccuracy: Number,
+    selectedEventLogSimilarity: Number,
+  },
   methods: {
     createChart(chartId, chartData) {
       const ctx = document.getElementById(chartId);
@@ -51,10 +63,19 @@ export default {
     this.createChart('results-chart', this.resultsChartData);
     var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
 
-      axios
-        .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/results/`)
-        .then(res => (this.selectedRunningCaseActivities = res.data))
-        .catch(err => console.log(err));
+    axios
+      .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/trained_model/`)
+      .then(res => (this.selectedEventLogAccuracy = res.data))
+      .catch(err => console.log(err));
+    
+    this.selectedEventLogAccuracy = 0.75;
+    
+    axios
+      .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/results/`)
+      .then(res => (this.selectedEventLogResults = res.data))
+      .catch(err => console.log(err));
+    
+    this.selectedEventLogSimilarity = 0.74;
   }
 };
 </script>
@@ -69,7 +90,15 @@ export default {
   margin-bottom: 20px;
 }
 
+#selectedLogName {
+  margin-bottom: 5px;
+}
+
 #accuracyTitle {
+  margin-bottom: 5px;
+}
+
+#accuracyValue {
   margin-bottom: 5px;
 }
 
