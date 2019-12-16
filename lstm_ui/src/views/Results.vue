@@ -18,7 +18,7 @@
         <h4 id="accuracyTitle"><b>Accuracy:</b></h4>
         <p id="accuracyValue">{{ this.selectedEventLogAccuracy }}</p>
         <h4 id="similarityTitle" class="tooltip">Similarity:
-          <span class="tooltiptext">It is equal to (1-d), were d is the calculated Damerau-Levenshtein distance</span>
+          <span class="tooltiptext">It is equal to (1-d), where d is the calculated Damerau-Levenshtein distance</span>
         </h4>
         <p id="similarityValue">{{ this.selectedEventLogSimilarity }}</p>
       </div>
