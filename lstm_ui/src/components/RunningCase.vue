@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     createDiagram() {
+      console.log("RunningCase: inside createDiagram, nodes array has " + this.nodes.length + " elements");
       console.log("RunningCase: creating diagram!");
       myDiagram = $(go.Diagram, "myDiagramDiv", {
         contentAlignment: go.Spot.Center,
@@ -75,6 +76,8 @@ export default {
     updateDiagram() {
       console.log("RunningCase: Update diagram!")
       myDiagram.div = null;
+      this.createDiagram();
+      console.log("RunningCase: inside updateDiagram, nodes array has " + this.nodes.length + " elements");
     },
     showResults() {
       this.$parent.showResults();

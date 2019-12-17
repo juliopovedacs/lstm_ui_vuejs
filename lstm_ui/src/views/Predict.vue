@@ -102,13 +102,15 @@ export default {
     showSelectedRunningCase(runningCaseName, runningCaseId) {
       console.log("Predict: received request to show " + runningCaseName);
 
+      this.showRunningCase = true;
+
       this.selectedRunningCaseName = runningCaseName;
       this.selectedRunningCaseId = runningCaseId;
+      this.selectedRunningCaseNodeDataArray = this.selectedRunningCaseNodeDataArray.splice(0, this.selectedRunningCaseNodeDataArray.length);
+      this.selectedRunningCaseLinkDataArray = this.selectedRunningCaseLinkDataArray.splice(0, this.selectedRunningCaseLinkDataArray.length);
 
       this.timesRunningCaseSelectedInSameView =
-        this.timesRunningCaseSelectedInSameView + 1;
-
-      this.showRunningCase = false;
+      this.timesRunningCaseSelectedInSameView + 1;
 
       var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
 
@@ -149,10 +151,7 @@ export default {
         
         // Check functions
         this.$refs.runningCaseChild.updateDiagram();
-        this.$refs.runningCaseChild.createDiagram();
-      }
-
-      this.showRunningCase = true;
+      }      
     },
     updateLastActivityKey(newLastActivityKeyParamater) {
       console.log("Predict: last activity key changed");
@@ -215,7 +214,6 @@ export default {
 
       this.selectedRunningCaseLastActivityKey = newActivityKey;
       this.$refs.runningCaseChild.updateDiagram();
-      this.$refs.runningCaseChild.createDiagram();
     }
   },
   mounted() {
