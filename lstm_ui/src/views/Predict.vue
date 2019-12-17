@@ -91,7 +91,13 @@ export default {
   },
   methods: {
     showResults() {
-      this.$router.push({ path: "/results", query: {eventLogId: this.selectedEventLogId, eventLogName: this.selectedEventLogName } });
+      this.$router.push({
+        path: "/results",
+        query: {
+          eventLogId: this.selectedEventLogId,
+          eventLogName: this.selectedEventLogName
+        }
+      });
     },
     showSelectedRunningCase(runningCaseName, runningCaseId) {
       console.log("Predict: received request to show " + runningCaseName);
@@ -107,7 +113,9 @@ export default {
       var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
 
       axios
-        .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/activities/`)
+        .get(
+          `http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/activities/`
+        )
         .then(res => (this.selectedRunningCaseActivities = res.data))
         .catch(err => console.log(err));
 
@@ -132,8 +140,16 @@ export default {
       }
 
       if (this.timesRunningCaseSelectedInSameView > 1) {
-        // Update diagram when user selects another running case
+        console.log("User already had a running case selected");
+        console.log(
+          "Before updateDiagram, Predict running case has " +
+            this.selectedRunningCaseNodeDataArray.length +
+            " nodes"
+        );
+        
+        // Check functions
         this.$refs.runningCaseChild.updateDiagram();
+        this.$refs.runningCaseChild.createDiagram();
       }
 
       this.showRunningCase = true;
@@ -152,10 +168,12 @@ export default {
       var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
 
       axios
-        .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/activities/predict_next/`)
+        .get(
+          `http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/activities/predict_next/`
+        )
         .then(res => (newActivity = res.data))
         .catch(err => console.log(err));
-      
+
       var newActivityKey = this.selectedRunningCaseLastActivityKey + 1;
 
       runningCase1NodeDataArray.push({
@@ -177,38 +195,58 @@ export default {
       console.log(nextEvents);
 
       axios
-        .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/activities/predict_all/`)
+        .get(
+          `http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/${this.selectedRunningCaseId}/activities/predict_all/`
+        )
         .then(res => (nextEvents = res.data))
         .catch(err => console.log(err));
 
-        var newActivityKey = this.selectedRunningCaseLastActivityKey + 1;
-        runningCase1NodeDataArray.push({
-          key: newActivityKey,
-          text: "Activity " + newActivityKey,
-          color: "lightblue"
-        });
-        
-        runningCase1LinkDataArray.push({
-          from: this.selectedRunningCaseLastActivityKey,
-          to: newActivityKey
-        });
-        
-        this.selectedRunningCaseLastActivityKey = newActivityKey;
-        this.$refs.runningCaseChild.updateDiagram();
+      var newActivityKey = this.selectedRunningCaseLastActivityKey + 1;
+      runningCase1NodeDataArray.push({
+        key: newActivityKey,
+        text: "Activity " + newActivityKey,
+        color: "lightblue"
+      });
+
+      runningCase1LinkDataArray.push({
+        from: this.selectedRunningCaseLastActivityKey,
+        to: newActivityKey
+      });
+
+      this.selectedRunningCaseLastActivityKey = newActivityKey;
+      this.$refs.runningCaseChild.updateDiagram();
+      this.$refs.runningCaseChild.createDiagram();
     }
   },
   mounted() {
     var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
     var eventLogName = document.getElementById("selectedLogName").innerHTML;
 
+    console.log(eventLogName);
+    console.log(eventLogId);
+    
     this.selectedEventLogId = eventLogId;
     this.selectedEventLogName = eventLogName;
 
-    console.log(eventLogId);
     axios
       .get(`http://127.0.0.1:8000/event_logs/${eventLogId}/running_cases/`)
       .then(res => (this.runningCases = res.data))
       .catch(err => console.log(err));
+
+    this.runningCases = [
+      {
+        id: 1,
+        name: "Running Case 1"
+      },
+      {
+        id: 2,
+        name: "Running Case 2"
+      },
+      {
+        id: 3,
+        name: "Running Case 3"
+      }
+    ];
   }
 };
 </script>

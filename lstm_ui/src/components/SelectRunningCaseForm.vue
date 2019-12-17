@@ -9,7 +9,7 @@
 <!-- HTML -->
 <template>
   <div>
-    <dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>
+    <dropdown :options="this.runningCases" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>
   </div>
 </template>
 
@@ -24,20 +24,6 @@ export default {
     },
     data() {
       return {
-        arrayOfObjects: [
-          {
-            id: 1,
-            name: "Running Case 1"
-          },
-          {
-            id: 2,
-            name: "Running Case 2"
-          },
-          {
-            id: 3,
-            name: "Running Case 3"
-          }
-        ],
         object: {
           name: 'Running Case',
         }

@@ -43,11 +43,14 @@ export default {
   },
   methods: {
     createDiagram() {
+      console.log("RunningCase: creating diagram!");
       myDiagram = $(go.Diagram, "myDiagramDiv", {
         contentAlignment: go.Spot.Center,
         "undoManager.isEnabled": true,
         layout: $(go.TreeLayout)
       });
+
+      console.log("RunningCase: nodes right now are " + this.nodes.length + " nodes long");
 
       var nodeDataArray = this.nodes;
       var linkDataArray = this.links;
@@ -70,8 +73,8 @@ export default {
       this.$emit("predictAll");
     },
     updateDiagram() {
+      console.log("RunningCase: Update diagram!")
       myDiagram.div = null;
-      this.createDiagram();
     },
     showResults() {
       this.$parent.showResults();
