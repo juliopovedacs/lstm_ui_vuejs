@@ -106,8 +106,8 @@ export default {
 
       this.selectedRunningCaseName = runningCaseName;
       this.selectedRunningCaseId = runningCaseId;
-      this.selectedRunningCaseNodeDataArray = this.selectedRunningCaseNodeDataArray.splice(0, this.selectedRunningCaseNodeDataArray.length);
-      this.selectedRunningCaseLinkDataArray = this.selectedRunningCaseLinkDataArray.splice(0, this.selectedRunningCaseLinkDataArray.length);
+      this.selectedRunningCaseNodeDataArray = new Array();
+      this.selectedRunningCaseLinkDataArray = new Array();
 
       this.timesRunningCaseSelectedInSameView =
       this.timesRunningCaseSelectedInSameView + 1;
@@ -150,7 +150,8 @@ export default {
         );
         
         // Check functions
-        this.$refs.runningCaseChild.updateDiagram();
+        this.$refs.runningCaseChild.clearDiagram();
+        this.$refs.runningCaseChild.updateDiagram(this.selectedRunningCaseNodeDataArray, this.selectedRunningCaseLinkDataArray);
       }      
     },
     updateLastActivityKey(newLastActivityKeyParamater) {
@@ -185,7 +186,8 @@ export default {
         to: newActivityKey
       });
       this.selectedRunningCaseLastActivityKey = newActivityKey;
-      this.$refs.runningCaseChild.updateDiagram();
+      this.$refs.runningCaseChild.clearDiagram();
+      this.$refs.runningCaseChild.createDiagram();
     },
     predictAll() {
       var eventLogId = document.getElementById("eventLogIdParagraph").innerHTML;
@@ -213,7 +215,8 @@ export default {
       });
 
       this.selectedRunningCaseLastActivityKey = newActivityKey;
-      this.$refs.runningCaseChild.updateDiagram();
+      this.$refs.runningCaseChild.clearDiagram();
+      this.$refs.runningCaseChild.createDiagram();
     }
   },
   mounted() {

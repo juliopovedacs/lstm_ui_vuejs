@@ -73,11 +73,35 @@ export default {
     addAllNodes() {
       this.$emit("predictAll");
     },
-    updateDiagram() {
+    updateDiagram(newNodes, newLinks) {
       console.log("RunningCase: Update diagram!")
-      myDiagram.div = null;
-      this.createDiagram();
+      console.log(newNodes);
+      console.log(newLinks);
       console.log("RunningCase: inside updateDiagram, nodes array has " + this.nodes.length + " elements");
+
+      myDiagram = $(go.Diagram, "myDiagramDiv", {
+        contentAlignment: go.Spot.Center,
+        "undoManager.isEnabled": true,
+        layout: $(go.TreeLayout)
+      });
+
+      var nodeDataArray = newNodes;
+      var linkDataArray = newLinks;
+
+      myDiagram.nodeTemplate = $(
+        go.Node,
+        "Auto",
+        $(go.Shape, {
+          figure: "RoundedRectangle",
+          fill: "lightblue"
+        }),
+        $(go.TextBlock, { margin: 5 }, new go.Binding("text", "text"))
+      );
+      myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+    },
+    clearDiagram()
+    {
+      myDiagram.div = null;
     },
     showResults() {
       this.$parent.showResults();
