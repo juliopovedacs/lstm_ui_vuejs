@@ -35,7 +35,7 @@ Before you run this project, make sure you have the following installed on your 
 2. Unzip the repository and go inside it
 
    ```
-   $ cd lstm_ui_vuejs
+   $ cd lstm_ui_vuejs/lstm_ui
    ```
 
 3. Execute the following command (inside the same folder of the ```package.json``` file):
