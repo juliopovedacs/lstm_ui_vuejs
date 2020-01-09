@@ -20,9 +20,13 @@ Before you run this project, make sure you have the following installed on your 
 
 - [Node.js](https://nodejs.org/es/)
 
+<br />
+
 ### Instructions to run the project
 
-**Important:** first, you need to download and run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:
+***Important*** 
+
+*First, you need to download and run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:*
 
 #### 1. Download the project
 
@@ -36,7 +40,7 @@ Download this GitHub repository. To do so, you can execute the following command
 
 #### 2. Install depdendencies
 
-Unzip the repository and go inside it
+Unzip the project and go inside it
 
    ```
    $ cd lstm_ui_vuejs/lstm_ui
@@ -70,7 +74,7 @@ Execute the following command:
    $ vue ui
    ```
    
-This command will open the **Vue CLI UI** in your default browser.
+   This command will open the **Vue CLI UI** in your default browser.
 
 - 4.2 Click on **Tasks** on the left menu
 - 4.3 Click on the **serve** button
