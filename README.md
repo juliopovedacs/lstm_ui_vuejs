@@ -24,7 +24,7 @@ Before you run this project, make sure you have the following installed on your 
 
 ### Instructions to run the project
 
-***Important*** 
+***Important:*** 
 
 *First, you need to download and run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:*
 
