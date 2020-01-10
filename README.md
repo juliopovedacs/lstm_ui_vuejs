@@ -12,23 +12,12 @@ This is the User Interface of [GenerativeLSTM](https://github.com/AdaptiveBProce
 
 The UI is built using a JavaScript framework called [Vue.js](https://vuejs.org). This project also uses [GoJS](https://gojs.net/latest/index.html) and [Chart.js](https://www.chartjs.org).
 
-## How can I run it?
+## How can I install it?
 
-### Prerequisites
+#### 1. Install [Node.js](https://nodejs.org/es/)
 
-Before you run this project, make sure you have the following installed on your computer:
 
-- [Node.js](https://nodejs.org/es/)
-
-<br />
-
-### Instructions to run the project
-
-***Important:*** 
-
-*First, you need to download and run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:*
-
-#### 1. Download the project
+#### 2. Download the project
 
 Download this GitHub repository. To do so, you can execute the following command in your cmd/terminal window:
 
@@ -38,7 +27,7 @@ Download this GitHub repository. To do so, you can execute the following command
 
 <br />
 
-#### 2. Install depdendencies
+#### 3. Install depdendencies
 
 Unzip the project and go inside it
 
@@ -56,7 +45,7 @@ The ```npm install``` command installs the project's dependencies based on the `
 
 <br />
 
-#### 3. Install Vue CLI
+#### 4. Install Vue CLI
 
 Execute the following command:
    
@@ -66,9 +55,9 @@ Execute the following command:
 
 <br />
 
-#### 4. Use Vue CLI
+#### 5. Configure Vue CLI
 
-- 4.1 Execute the following command:
+- 5.1 Execute the following command (inside `lstm_ui_vuejs`):
    
    ```
    $ vue ui
@@ -76,10 +65,34 @@ Execute the following command:
    
    This command will open the **Vue CLI UI** in your default browser.
 
-- 4.2 Click on **Tasks** on the left menu
-- 4.3 Click on the **serve** button
-- 4.4 Click on the **Execute task** button
-- 4.5 After the project finishes building, click on the **Open application** button. A new tab will appear with the project running
+- 5.2 In the **Vue Project Manager** (opened browser window), select **Import**
+- 5.2 Select **lstm_ui**
+- 5.3 Select **Import this folder**. This will open the lstm_ui **Project dashboard**
+- 5.4 Click on **Tasks** in the left menu
+- 5.5 In **Project tasks**, select **serve**
+- 5.6 Click on **Run task**
+- 5.7 When the project finishes compiling, click on **Open app**
+
+<br />
+
+## How can I run it?
+
+***Important:*** 
+
+*First, you need to download and run the [LSTM UI REST API project](https://github.com/japoveda10/lstm_ui_REST_API). Then, follow the next steps:*
+
+- 1. Execute the following command (inside the `lstm_ui_vuejs` directory):
+   
+   ```
+   $ vue ui
+   ```
+   
+   This will open the **Project dashboard**
+   
+- 2. Click on **Tasks** on the left menu
+- 3. In **Project tasks**, select **serve**
+- 4. Click on **Run task** button
+- 5. When the project finishes compiling, click on the **Open app**. A new browser tab will appear with the project running
 
 <br />
 
