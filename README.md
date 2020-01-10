@@ -83,6 +83,8 @@ Execute the following command:
 
 - 1. Execute the following command (inside the `lstm_ui_vuejs` directory):
    
+   <br />
+   
    ```
    $ vue ui
    ```
