@@ -27,7 +27,7 @@ Download this GitHub repository. To do so, you can execute the following command
 
 <br />
 
-#### 3. Install depdendencies
+#### 3. Install dependencies
 
 Unzip the project and go inside it
 
