@@ -13,7 +13,8 @@
     <b>Selected log:</b>
     <p id="selectedLogName">{{ this.$route.query.log.name }}</p>
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
-    <RunningCases />    
+    <RunningCases v-bind:runningCases="exampleRunningCases" />
+    <br>
     <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
     <RunningCase
       id="runningCase"
