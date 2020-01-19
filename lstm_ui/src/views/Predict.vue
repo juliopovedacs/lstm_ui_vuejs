@@ -13,7 +13,7 @@
     <b>Selected log:</b>
     <p id="selectedLogName">{{ this.$route.query.log.name }}</p>
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
-    <b id="runningCasesTitle">Running Cases:</b>
+    <RunningCases />    
     <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
     <RunningCase
       id="runningCase"
@@ -32,6 +32,7 @@
 <!-- JavaScript -->
 <script>
 import axios from "axios";
+import RunningCases from "../components/RunningCases";
 import SelectRunningCaseForm from "../components/SelectRunningCaseForm";
 import RunningCase from "../components/RunningCase";
 
@@ -71,11 +72,26 @@ var runningCase3LinkDataArray = [
 export default {
   name: "Predict",
   components: {
+    RunningCases,
     SelectRunningCaseForm,
     RunningCase
   },
   data() {
     return {
+      exampleRunningCases: [
+        {
+          id: 1,
+          name: "Running Case 1"
+        },
+        {
+          id: 2,
+          name: "Running Case 2"
+        },
+        {
+          id: 3,
+          name: "Running Case 3"
+        }
+      ],
       selectedEventLogId: 0,
       selectedEventLogName: "",
       runningCases: [],
