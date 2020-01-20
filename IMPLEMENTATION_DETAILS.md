@@ -7,14 +7,14 @@
     ├── __init__.py
     ├── admin.py
     ├── apps.py
-    ├── migrations
-    ├── models.py
-    ├── serializers.py
+    ├── migrations                          # Directory containing migrations history (updates to models)
+    ├── models.py                           # Defines Django models
+    ├── serializers.py                      # Defines Serializers (convert database data to Django models and vice versa)
     ├── tests.py
-    └── views.py
+    └── views.py                            # Defines endpoints
 ├── EXAMPLE HTTP REQUESTS
-    ├── POST_EVENT_LOG.txt
-    └── POST_RUNNING_CASE.txt
+    ├── POST_EVENT_LOG.txt                  # Example HTTP POST /event_logs/ request body
+    └── POST_RUNNING_CASE.txt               # Example HTTP POST /running_cases/ request body
 ├── input_files
     ├── ConsultaDataMining201618.csv
     ├── Production.csv
@@ -24,8 +24,8 @@
     └── PurchasingExample.xes.gz
 ├── lstm_ui_REST_API
     ├── __init__.py
-    ├── settings.py
-    ├── urls.py
+    ├── settings.py                         # Defines database connection among other important information about the project
+    ├── urls.py                             # Defines the project's routes
     └── wsgi.py
 ├── support_modules
     ├── nn_support.py
