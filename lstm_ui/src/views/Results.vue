@@ -176,5 +176,6 @@ export default {
   padding-right: 50px;
   padding-left: 50px;
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 </style>

@@ -1,3 +1,12 @@
+<!--
+#----------------------------------------------------------------------------
+# LSTM UI Vue.js Project
+# By japoveda10
+# Predict.vue
+#----------------------------------------------------------------------------
+-->
+
+<!-- HTML -->
 <template>
 <div>
     <h2>Running Cases</h2>
@@ -8,6 +17,7 @@
 </div>  
 </template>
 
+<!-- JavaScript -->
 <script>
 import RunningCaseItem from './RunningCaseItem.vue';
 
@@ -20,6 +30,7 @@ export default {
 }
 </script>
 
+<!-- CSS -->
 <style scoped>
 
 </style>
