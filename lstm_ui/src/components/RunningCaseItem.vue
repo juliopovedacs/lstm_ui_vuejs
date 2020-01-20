@@ -1,6 +1,6 @@
 <template>
     <div class="runningCaseItem">
-        <input type="button" value="Expand" v-on:click="expand">
+        <button class="expandButton" v-on:click="expand">Expand</button>
         <p>{{ runningCase.name }}</p>
     </div>
 </template>
@@ -24,13 +24,15 @@ export default {
     border-bottom: 1px #ccc dotted;
 }
 
-.del {
-    background: #ff0000;
+.expandButton {
+    background: rgb(30, 126, 216);
     color: #fff;
     border: none;
     padding: 5px 9px;
-    border-radius: 50%;
     cursor: pointer;
     float: right;
+    padding: 5px;
+    border-radius: 15px;
+    font-weight: bold;
 }
 </style>
