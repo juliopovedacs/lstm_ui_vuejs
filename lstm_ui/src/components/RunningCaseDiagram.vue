@@ -28,7 +28,7 @@ var $ = go.GraphObject.make;
 var myDiagram;
 
 export default {
-  name: "SelectRunningCaseForm",
+  name: "RunningCaseDiagram",
   props: {
     nodes: Array,
     links: Array,
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       object: {
-        name: "Running Case"
+        name: "Running Case Diagram"
       }
     };
   },

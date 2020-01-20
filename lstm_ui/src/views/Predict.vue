@@ -15,7 +15,7 @@
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
     <RunningCases v-bind:runningCases="exampleRunningCases" v-on:expand-running-case="expandRunningCase" />
     <br>
-    <RunningCase
+    <RunningCaseDiagram
       id="runningCase"
       ref="runningCaseChild"
       v-if="showRunningCase"
@@ -33,7 +33,7 @@
 <script>
 import axios from "axios";
 import RunningCases from "../components/RunningCases";
-import RunningCase from "../components/RunningCase";
+import RunningCaseDiagram from "../components/RunningCaseDiagram";
 
 var runningCase1NodeDataArray = [
   { key: 1, text: "Activity 1", color: "lightblue" },
@@ -72,7 +72,7 @@ export default {
   name: "Predict",
   components: {
     RunningCases,
-    RunningCase
+    RunningCaseDiagram
   },
   data() {
     return {
