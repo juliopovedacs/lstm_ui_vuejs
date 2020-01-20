@@ -15,7 +15,6 @@
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
     <RunningCases v-bind:runningCases="exampleRunningCases" v-on:expand-running-case="expandRunningCase" />
     <br>
-    <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
     <RunningCase
       id="runningCase"
       ref="runningCaseChild"
@@ -34,7 +33,6 @@
 <script>
 import axios from "axios";
 import RunningCases from "../components/RunningCases";
-import SelectRunningCaseForm from "../components/SelectRunningCaseForm";
 import RunningCase from "../components/RunningCase";
 
 var runningCase1NodeDataArray = [
@@ -74,7 +72,6 @@ export default {
   name: "Predict",
   components: {
     RunningCases,
-    SelectRunningCaseForm,
     RunningCase
   },
   data() {
@@ -107,9 +104,6 @@ export default {
     };
   },
   methods: {
-    expandRunningCase(id) {
-      console.log("Predict.vue - expand Running Case " + id)
-    },
     showResults() {
       this.$router.push({
         path: "/results",
@@ -237,6 +231,10 @@ export default {
       this.selectedRunningCaseLastActivityKey = newActivityKey;
       this.$refs.runningCaseChild.clearDiagram();
       this.$refs.runningCaseChild.createDiagram();
+    },
+    expandRunningCase(id) {
+      console.log("Predict.vue - expand Running Case " + id)
+      this.showSelectedRunningCase("Running Case " + id, id)
     }
   },
   mounted() {
@@ -279,10 +277,6 @@ export default {
 }
 
 #selectedLogName {
-  margin-bottom: 20px;
-}
-
-#runningCasesComboBox {
   margin-bottom: 20px;
 }
 
