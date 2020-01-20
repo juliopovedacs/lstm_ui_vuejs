@@ -10,7 +10,7 @@ This is the User Interface of [GenerativeLSTM](https://github.com/AdaptiveBProce
 
 ## How was it built?
 
-The UI is built using a JavaScript framework called [Vue.js](https://vuejs.org). This project also uses [GoJS](https://gojs.net/latest/index.html) and [Chart.js](https://www.chartjs.org).
+The UI is built using a JavaScript framework called [Vue.js](https://vuejs.org). This project also uses [GoJS](https://gojs.net/latest/index.html) and [Chart.js](https://www.chartjs.org). Implementation details are available [here](https://github.com/japoveda10/lstm_ui_vuejs/blob/master/IMPLEMENTATION_DETAILS.md)
 
 ## How can I install it?
 
