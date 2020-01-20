@@ -1,6 +1,6 @@
 <template>
     <div class="runningCaseItem">
-        <button class="expandButton" v-on:click="expand">Expand</button>
+        <button class="expandButton" @click="$emit('expand-running-case', runningCase.id)" v-on:click="expand">Expand</button>
         <p>{{ runningCase.name }}</p>
     </div>
 </template>
@@ -11,7 +11,7 @@ export default {
     props: ["runningCase"],
     methods: {
         expand() {
-            console.log("Expand " + this.runningCase.name)
+            console.log("RunningCaseItem.vue - expand " + this.runningCase.name)
         }
     }
 }

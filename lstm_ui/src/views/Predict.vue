@@ -13,7 +13,7 @@
     <b>Selected log:</b>
     <p id="selectedLogName">{{ this.$route.query.log.name }}</p>
     <p id="eventLogIdParagraph" hidden>{{ this.$route.query.log.id }}</p>
-    <RunningCases v-bind:runningCases="exampleRunningCases" />
+    <RunningCases v-bind:runningCases="exampleRunningCases" v-on:expand-running-case="expandRunningCase" />
     <br>
     <SelectRunningCaseForm :runningCases="runningCases" id="runningCasesComboBox" />
     <RunningCase
@@ -107,6 +107,9 @@ export default {
     };
   },
   methods: {
+    expandRunningCase(id) {
+      console.log("Predict.vue - expand Running Case " + id)
+    },
     showResults() {
       this.$router.push({
         path: "/results",
