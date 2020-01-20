@@ -8,14 +8,14 @@
 
 <!-- HTML -->
 <template>
-  <div>
-    <div>
+  <div id="runningCaseDiagramDiv">
+    <div id="leftDiv">
+      <div id="myDiagramDiv"></div>
+    </div>
+    <div id="rightDiv">
       <button id="predictNextEventButton" @click="addNode" variant="primary">Predict Next Event</button>
       <button id="predictAlltButton" @click="addAllNodes" variant="primary">Predict All</button>
       <button id="showResultsButton" @click="showResults" variant="primary">Show Results</button>
-    </div>
-    <div>
-      <div id="myDiagramDiv" style="width: 100%; height: 300px; border: 1px solid black;"></div>
     </div>
   </div>
 </template>
@@ -116,7 +116,6 @@ export default {
 <!-- CSS -->
 <style scoped>
 button {
-  margin-right: 20px;
   padding: 10px 10px;
   font-size: 15px;
   text-align: center;
@@ -127,6 +126,11 @@ button {
   border: none;
   border-radius: 15px;
   box-shadow: 0 8px #999;
+  display: block;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  width: 100px;
+  font-weight: bold;
 }
 
 button:hover {
@@ -139,7 +143,31 @@ button:active {
   transform: translateY(4px);
 }
 
-#predictNextEventButton {
+#runningCaseDiagramDiv {
+  width: 100%;
+  overflow: hidden;
+}
+
+#leftDiv {
+  width: 80%;
+  float: left;
+}
+
+#rightDiv {
+  height: 300px;
+  width: 20%;
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#myDiagramDiv {
+  width: 100%;
+  height: 300px;
   margin-bottom: 20px;
+  margin-left: 20px;
+  border: 1px solid black;
 }
 </style>
