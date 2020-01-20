@@ -41,3 +41,5 @@
 * style    - CSS
 
 **Components** have **Lifecycle Hooks**, like `mounted()`, that allow the developer to do specific things when a component is created, updated, deleted, etc.
+
+**Components** can be organized hierarchically. **Child components** pass data to their **parent component** **emitting an event**, which is catched by the parent using the `v-on` **directive** (**Vue.js** has many **directives** that can be used inside HTML tags). **Parent components** send data to their **child components** using **props**.
