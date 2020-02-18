@@ -51,7 +51,7 @@ export default {
             const selectedButtonGreen = 66;
             const selectedButtonBlue = 66;
             e.target.style = "background:" + "rgb(" + selectedButtonRed + "," + selectedButtonGreen + "," + selectedButtonBlue + ")";
-            e.target.parentElement.style = "background:" + "rgb(" + selectedItemRed + "," + selectedItemGreen + "," + selectedItemBlue + ")";
+            e.target.parentElement.style = "background:" + "rgb(" + selectedItemRed + "," + selectedItemGreen + "," + selectedItemBlue + "); color:" + "rgb(" + defaultRed + "," + defaultGreen + "," + defaultBlue + ")";
         }
     }
 }
