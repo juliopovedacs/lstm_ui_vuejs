@@ -9,7 +9,7 @@
 <!-- HTML -->
 <template>
     <div class="runningCaseItem">
-        <button class="expandButton" @click="$emit('expand-running-case', runningCase.id)" v-on:click="expand">Expand</button>
+        <button class="expandButton" @click="$emit('expand-running-case', runningCase.id)" v-on:click="expand($event)">Expand</button>
         <p>{{ runningCase.name }}</p>
     </div>
 </template>
@@ -20,8 +20,38 @@ export default {
     name: "RunningCaseItem",
     props: ["runningCase"],
     methods: {
-        expand() {
+        expand(e) {
             console.log("RunningCaseItem.vue - expand " + this.runningCase.name)
+            
+            // Clears items color
+            var other_items = [];
+            other_items = document.querySelectorAll(".runningCaseItem");
+            const defaultRed = 244;
+            const defaultGreen = 244;
+            const defaultBlue = 244;
+            other_items.forEach(element => {
+                element.style = "background:" + "rgb(" + defaultRed + "," + defaultGreen + "," + defaultBlue + ")";
+            });
+
+            // Clears buttons color
+            var other_buttons = []
+            other_buttons = document.querySelectorAll(".expandButton");
+            const defaultButtonRed = 30;
+            const defaultButtonGreen = 126;
+            const defaultButtonBlue = 216;
+            other_buttons.forEach(element => {
+                element.style = "background:" + "rgb(" + defaultButtonRed + "," + defaultButtonGreen + "," + defaultButtonBlue + ")";
+            });
+
+            // Highlight selected running case
+            const selectedItemRed = 30;
+            const selectedItemGreen = 126;
+            const selectedItemBlue = 216;
+            const selectedButtonRed = 245;
+            const selectedButtonGreen = 66;
+            const selectedButtonBlue = 66;
+            e.target.style = "background:" + "rgb(" + selectedButtonRed + "," + selectedButtonGreen + "," + selectedButtonBlue + ")";
+            e.target.parentElement.style = "background:" + "rgb(" + selectedItemRed + "," + selectedItemGreen + "," + selectedItemBlue + ")";
         }
     }
 }
